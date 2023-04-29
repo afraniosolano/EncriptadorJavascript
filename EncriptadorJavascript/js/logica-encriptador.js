@@ -25,11 +25,13 @@ function onclickEncriptar() {
   var areaEncriptar = document.getElementById("areaEncriptar");
   var areaDesencriptar = document.getElementById("areaDesencriptar");
   areaDesencriptar.value = encriptarTexto(areaEncriptar.value);
+  copiarPortaPapeles();
 }
 function onclickDesencriptar() {
   var areaEncriptar = document.getElementById("areaEncriptar");
   var areaDesencriptar = document.getElementById("areaDesencriptar");
   areaDesencriptar.value = desencriptarTexto(areaEncriptar.value);
+  copiarPortaPapeles();
 }
 
 function buscarObjetoLetra(letraBuscado) {
@@ -93,3 +95,34 @@ function desencriptarTexto(textoEncriptado) {
 
   return texto;
 }
+
+const objAreaEncriptar = document.getElementById("areaEncriptar");
+
+objAreaEncriptar.addEventListener("input", () => {
+  objAreaEncriptar.value = objAreaEncriptar.value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+});
+
+const objAreaDesencriptar = document.getElementById("areaDesencriptar");
+objAreaDesencriptar.addEventListener("input", () => {
+  objAreaDesencriptar.value = objAreaDesencriptar.value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+});
+
+function copiarPortaPapeles() {
+  const chkCopiar = document.getElementById("chkCopiar");
+  if (chkCopiar.checked) {
+    objAreaDesencriptar.select();
+    document.execCommand("copy");
+    objAreaDesencriptar.blur();
+  }
+}
+
+const chkCopiar = document.getElementById("chkCopiar");
+chkCopiar.addEventListener("change", () => {
+  copiarPortaPapeles();
+});

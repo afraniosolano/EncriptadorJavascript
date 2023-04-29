@@ -3,27 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ejemplo de diseño responsive</title>
+    <title>Nuevo producto onEncrypt</title>
     <link rel="stylesheet" href="css/estilos-encriptador.css" />
-    <script src="js/logica-encriptador.js"></script>
+    
   </head>
-  <body>
+  <BR>
+  <div class="centrado">
+    <img class="tooltip" data-tooltip="¡Comunícate de manera segura!" src="img/logo640.png" />
+    <h2>Tu compañero en seguridad digital</h2>
+  </div>
     <div class="contenedor">
       <div class="izquierdo">
+        <label for="areaEncriptar">Texto a procesar:</label>
         <textarea class="texto" id="areaEncriptar"></textarea>
+        <p>Solo letras minúsculas y sin acentos</p>
         <div class="botones">
-          <button class="boton azul" onclick="javascript:onclickEncriptar()">
+          <button
+            class="boton azul tooltip"
+            onclick="javascript:onclickEncriptar()"
+            data-tooltip="Haz clic aquí para guardar"
+          >
             Encriptar
           </button>
-          <button class="boton gris" onclick="javascript:onclickDesencriptar()">
+          <button
+            class="boton gris tooltip"
+            onclick="javascript:onclickDesencriptar()"
+            data-tooltip="Haz clic aquí para guardar"
+          >
             Desencriptar
           </button>
         </div>
       </div>
       <div class="derecho">
-        <textarea class="texto" id="areaDesencriptar"></textarea>
+        <label for="areaDesencriptar">Respuesta:</label>
+        <textarea class="texto" id="areaDesencriptar" readonly></textarea>
+        <input type="checkbox" id="chkCopiar" checked/>
+        <label for="chkCopiar">Copiar al portapapeles</label>
       </div>
     </div>
   </body>
 </html>
-<script></script>
+<script src="js/logica-encriptador.js"></script>
