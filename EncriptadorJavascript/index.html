@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nuevo producto onEncrypt</title>
-    <link rel="stylesheet" href="css/estilos-encriptador.css" />
-    
+    <title>onEncrypt</title>
+    <link href="img/favicon.png" rel="shortcut icon" type="image/png" />
+    <link rel="stylesheet" href="css/estilos-encriptador.css" />    
   </head>
   <BR>
   <div class="centrado">
@@ -14,29 +14,29 @@
   </div>
     <div class="contenedor">
       <div class="izquierdo">
-        <label for="areaEncriptar">Texto a procesar:</label>
-        <textarea class="texto" id="areaEncriptar"></textarea>
+        <label for="areaEncriptar">Texto a procesar ("Alt + c" Encriptar) ("Alt + v" Desencriptar):</label>
+        <textarea class="texto" id="areaEncriptar" placeholder="Escribe aquí el texto que deseas encriptar o desencriptar"></textarea>
         <p>Solo letras minúsculas y sin acentos</p>
         <div class="botones">
           <button
             class="boton azul tooltip"
             onclick="javascript:onclickEncriptar()"
-            data-tooltip="Haz clic aquí para guardar"
+            data-tooltip="Haz clic aquí para encriptar el texto"
           >
             Encriptar
           </button>
           <button
             class="boton gris tooltip"
             onclick="javascript:onclickDesencriptar()"
-            data-tooltip="Haz clic aquí para guardar"
+            data-tooltip="Haz clic aquí para desencriptar el texto"
           >
             Desencriptar
           </button>
         </div>
       </div>
       <div class="derecho">
-        <label for="areaDesencriptar">Respuesta:</label>
-        <textarea class="texto" id="areaDesencriptar" readonly></textarea>
+        <label for="areaDesencriptar">Respuesta ("Alt + d Invertir"):</label>
+        <textarea class="texto" id="areaDesencriptar" placeholder="El resultado de la encriptación o Desencriptación se mostrara aquí" readonly></textarea>
         <input type="checkbox" id="chkCopiar" checked/>
         <label for="chkCopiar">Copiar al portapapeles</label>
       </div>

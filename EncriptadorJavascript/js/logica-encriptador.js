@@ -21,17 +21,30 @@ let arrayLetras = [
   { letra: "u", conversion: "ufat" },
 ];
 
+var ultimaOperacion = "enc";
 function onclickEncriptar() {
   var areaEncriptar = document.getElementById("areaEncriptar");
   var areaDesencriptar = document.getElementById("areaDesencriptar");
-  areaDesencriptar.value = encriptarTexto(areaEncriptar.value);
-  copiarPortaPapeles();
+  strEncriptar = ("" + areaEncriptar.value).trim();
+  if (strEncriptar == "") {
+    mostrarBlanco(true);
+  } else {
+    mostrarBlanco(false);
+    areaDesencriptar.value = encriptarTexto(areaEncriptar.value);
+    copiarPortaPapeles();
+  }
 }
 function onclickDesencriptar() {
   var areaEncriptar = document.getElementById("areaEncriptar");
   var areaDesencriptar = document.getElementById("areaDesencriptar");
-  areaDesencriptar.value = desencriptarTexto(areaEncriptar.value);
-  copiarPortaPapeles();
+  strEncriptar = ("" + areaEncriptar.value).trim();
+  if (strEncriptar == "") {
+    mostrarBlanco(true);
+  } else {
+    mostrarBlanco(false);
+    areaDesencriptar.value = desencriptarTexto(areaEncriptar.value);
+    copiarPortaPapeles();
+  }
 }
 
 function buscarObjetoLetra(letraBuscado) {
@@ -56,6 +69,7 @@ function buscarObjetoConversion(letraBuscado) {
 //console.log(desencriptarTexto("mufatrcimesenterlaigober"));
 
 function encriptarTexto(texto) {
+  ultimaOperacion = "enc";
   let textoEncriptado = "";
 
   for (let i = 0; i < texto.length; i++) {
@@ -71,6 +85,7 @@ function encriptarTexto(texto) {
 }
 
 function desencriptarTexto(textoEncriptado) {
+  ultimaOperacion = "des";
   let texto = "";
 
   for (let i = 0; i < textoEncriptado.length; i++) {
@@ -125,4 +140,39 @@ function copiarPortaPapeles() {
 const chkCopiar = document.getElementById("chkCopiar");
 chkCopiar.addEventListener("change", () => {
   copiarPortaPapeles();
+});
+
+function mostrarBlanco(show) {
+  if (show) {
+    objAreaDesencriptar.style.backgroundImage = "url(img/bblanco.png)";
+    objAreaDesencriptar.value =
+      "Ningun Mensaje fue encontrado\nIngrese el texto que desee encriptar o desencriptar";
+  } else {
+    objAreaDesencriptar.style.backgroundImage = "none";
+  }
+}
+
+// Detectar cuando se presiona la tecla Alt o la tecla C
+document.addEventListener("keydown", function (event) {
+  if (event.key === "©") {
+    objAreaDesencriptar.value = encriptarTexto(objAreaEncriptar.value);
+    event.preventDefault();
+  }
+
+  if (event.key === "√") {
+    //ALT V
+    objAreaDesencriptar.value = desencriptarTexto(objAreaEncriptar.value);
+    event.preventDefault();
+  }
+
+  if (event.key === "∂") {
+    //ALT D
+    objAreaEncriptar.value = objAreaDesencriptar.value;
+    if (ultimaOperacion == "enc") {
+      objAreaDesencriptar.value = desencriptarTexto(objAreaEncriptar.value);
+    } else {
+      objAreaDesencriptar.value = encriptarTexto(objAreaEncriptar.value);
+    }
+    event.preventDefault();
+  }
 });
