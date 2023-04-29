@@ -22,4 +22,5 @@ Para utilizar la aplicación, sigue los siguientes pasos:
 4. Si deseas desencriptar el texto, ingresa la versión encriptada en el campo "Texto encriptado" y haz clic en el botón "Desencriptar".
 
 ## Créditos
-Este programa fue creado por Afranio Solano y publicado en GitHub Pages. Si encuentras algún error o problema con la aplicación, por favor [contacta al autor](https://github.com/afraniosolano).
+Este programa fue creado como parte del programa Oracle Next Education #ChallengeOneCodificador5.
+El código fue escrito por Afranio Solano y publicado en GitHub Pages. Si encuentras algún error o problema con la aplicación, por favor [contacta al autor](https://github.com/afraniosolano).
